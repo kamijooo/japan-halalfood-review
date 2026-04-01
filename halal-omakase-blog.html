@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Tried a Halal Omakase in Tokyo — Anna's Travel Blog</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans:wght@400;500;600&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf8f5;
+    --white: #ffffff;
+    --gold: #b8955a;
+    --gold-light: #e8d5b0;
+    --text: #1e1e1e;
+    --text-mid: #555;
+    --text-light: #888;
+    --border: #e5ddd0;
+    --accent-bg: #f5f0e8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 15.5px;
+    line-height: 1.8;
+  }
+
+  /* ── SITE HEADER ── */
+  .site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .site-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.5px;
+  }
+  .site-logo span { color: var(--gold); }
+  .breadcrumb {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-left: auto;
+  }
+  .breadcrumb a { color: var(--gold); text-decoration: none; }
+
+  /* ── ARTICLE WRAPPER ── */
+  .article-wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 18px 80px;
+  }
+
+  /* ── HERO ── */
+  .article-hero {
+    margin-top: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.1s forwards;
+  }
+  .category-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: white;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 14px;
+  }
+  .article-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 6vw, 34px);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .article-hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  /* ── AUTHOR BAR ── */
+  .author-bar {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.2s forwards;
+  }
+  .author-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid var(--gold-light);
+  }
+  .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .author-meta { flex: 1; }
+  .author-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .author-sub {
+    font-size: 11.5px;
+    color: var(--text-light);
+  }
+  .share-btn {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 11px;
+    color: var(--text-mid);
+    cursor: pointer;
+  }
+
+  /* ── HERO IMAGE ── */
+  .hero-img-wrap {
+    margin: 0 -18px 28px;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+  .hero-img-wrap img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-img-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.5));
+    color: white;
+    font-size: 11px;
+    padding: 20px 16px 10px;
+    font-style: italic;
+  }
+
+  /* ── BODY SECTIONS ── */
+  .section {
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .section p {
+    color: #333;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  .section p strong { color: var(--text); font-weight: 600; }
+
+  /* ── INLINE PHOTO BLOCKS ── */
+  .photo-block {
+    margin: 20px 0;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .photo-block img {
+    width: 100%;
+    display: block;
+    border-radius: 6px;
+  }
+  .photo-caption {
+    font-size: 11.5px;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 7px;
+    font-style: italic;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 20px 0;
+  }
+  .photo-grid img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 5px;
+    display: block;
+  }
+  .photo-grid .caption-pair {
+    grid-column: 1/-1;
+    font-size: 11px;
+    color: var(--text-light);
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* ── SELFIE BLOCK ── */
+  .selfie-block {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin: 24px 0;
+    background: var(--white);
+    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid var(--border);
+  }
+  .selfie-block img {
+    width: 110px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .selfie-text {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.65;
+    font-style: italic;
+  }
+  .selfie-text strong {
+    display: block;
+    font-style: normal;
+    font-size: 12px;
+    color: var(--text-light);
+    margin-top: 8px;
+  }
+
+  /* ── QUOTE / PULL QUOTE ── */
+  .pull-quote {
+    border-left: 3px solid var(--gold);
+    background: var(--accent-bg);
+    padding: 16px 18px;
+    margin: 24px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .pull-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ── RATING CARD ── */
+  .rating-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    margin: 20px 0;
+  }
+  .rating-card-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+  .rating-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--bg);
+    font-size: 14px;
+  }
+  .rating-row:last-child { border-bottom: none; }
+  .stars { color: var(--gold); font-size: 14px; letter-spacing: 1px; }
+
+  /* ── HALAL BADGE SECTION ── */
+  .halal-section {
+    background: linear-gradient(135deg, #f0f7ee 0%, #e8f4e8 100%);
+    border: 1.5px solid #b5d9b0;
+    border-radius: 10px;
+    padding: 20px 18px;
+    margin: 28px 0;
+  }
+  .halal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #2d7a2d;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+  .halal-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: #1a4d1a;
+    margin-bottom: 10px;
+  }
+  .halal-section p { color: #2a5a2a; font-size: 14.5px; }
+  .halal-checklist {
+    list-style: none;
+    margin-top: 12px;
+  }
+  .halal-checklist li {
+    font-size: 14px;
+    color: #2a5a2a;
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .halal-checklist li::before {
+    content: '✓';
+    color: #2d7a2d;
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  /* ── HONEST REVIEW CARD ── */
+  .review-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 24px 0;
+  }
+  .review-box-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 10px;
+  }
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 12px;
+  }
+  .pros, .cons {
+    background: var(--bg);
+    border-radius: 6px;
+    padding: 12px;
+  }
+  .pros h4 { color: #2d7a2d; font-size: 12px; margin-bottom: 8px; }
+  .cons h4 { color: #b05a2a; font-size: 12px; margin-bottom: 8px; }
+  .pros li, .cons li {
+    font-size: 12.5px;
+    color: var(--text-mid);
+    list-style: none;
+    padding: 2px 0;
+  }
+  .pros li::before { content: '+ '; color: #2d7a2d; font-weight: 700; }
+  .cons li::before { content: '△ '; color: #b05a2a; }
+
+  /* ── WHO SHOULD GO ── */
+  .who-box {
+    background: var(--accent-bg);
+    border-radius: 8px;
+    padding: 18px;
+    margin: 20px 0;
+  }
+  .who-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    margin-bottom: 10px;
+  }
+  .who-list { list-style: none; }
+  .who-list li {
+    font-size: 14px;
+    color: var(--text-mid);
+    padding: 4px 0;
+    display: flex; gap: 8px;
+  }
+  .who-list li::before { content: '→'; color: var(--gold); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+  .divider-diamond {
+    text-align: center;
+    position: relative;
+    margin: 30px 0;
+  }
+  .divider-diamond::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px;
+    background: var(--border);
+    transform: translateY(-50%);
+  }
+  .divider-diamond span {
+    background: var(--bg);
+    color: var(--gold);
+    padding: 0 14px;
+    font-size: 14px;
+    position: relative;
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    background: linear-gradient(135deg, #1a1208 0%, #2d2010 100%);
+    border-radius: 12px;
+    padding: 28px 22px;
+    text-align: center;
+    margin: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9a96e' fill-opacity='0.05'%3E%3Cpath d='M20 20l-10-10 10 10-10 10 10-10 10 10-10-10 10-10z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .cta-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .cta-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #f5ecd8;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .cta-section p {
+    color: #a09070;
+    font-size: 13.5px;
+    margin-bottom: 22px;
+    position: relative;
+  }
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: white;
+    border: none;
+    padding: 15px 24px;
+    border-radius: 6px;
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .btn-primary:hover { background: #a07840; transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: #c8b080;
+    border: 1px solid #4a3820;
+    padding: 13px 24px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  .cta-note {
+    font-size: 11px;
+    color: #5a4830;
+    margin-top: 12px;
+    position: relative;
+  }
+
+  /* ── INFO TABLE ── */
+  .info-table {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+  .info-table-title {
+    background: var(--accent-bg);
+    padding: 10px 16px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-mid);
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+  }
+  .info-row {
+    display: flex;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--bg);
+    font-size: 13.5px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label {
+    width: 90px;
+    flex-shrink: 0;
+    color: var(--text-light);
+    font-size: 12px;
+  }
+  .info-value { color: var(--text); }
+
+  /* ── STICKY CTA BAR ── */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 12px 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 200;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+  .sticky-bar.visible { transform: translateY(0); }
+  .sticky-bar-text {
+    flex: 1;
+  }
+  .sticky-bar-text strong {
+    display: block;
+    font-size: 12.5px;
+    color: var(--text);
+  }
+  .sticky-bar-text span {
+    font-size: 11px;
+    color: var(--text-light);
+  }
+  .sticky-btn {
+    background: var(--gold);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── TAG CLOUD ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 20px 0;
+  }
+  .tag {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 11.5px;
+    color: var(--text-mid);
+  }
+
+  /* ── RELATED ── */
+  .related-section {
+    margin: 30px 0 0;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+  .related-title {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 14px;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .related-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .related-card img {
+    width: 100%; height: 80px; object-fit: cover; display: block;
+  }
+  .related-card-text {
+    padding: 10px;
+    font-size: 12px;
+    color: var(--text-mid);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── SNACKBAR ── */
+  .snackbar {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #1a1208;
+    color: #f5ecd8;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 300;
+  }
+  .snackbar.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- SITE HEADER -->
+<header class="site-header">
+  <div class="site-logo">anna<span>travels</span>.com</div>
+  <div class="breadcrumb">
+    <a href="#">Japan</a> &rsaquo; Tokyo &rsaquo; Food
+  </div>
+</header>
+
+<!-- ARTICLE -->
+<main class="article-wrap">
+
+  <!-- ARTICLE HEADER -->
+  <div class="article-hero">
+    <div class="category-tag">🗾 Tokyo Food Blog</div>
+    <h1>I Tried a <em>Halal Omakase</em> in Tokyo<br>— Wagyu & Sushi That Blew My Mind</h1>
+  </div>
+
+  <!-- AUTHOR BAR -->
+  <div class="author-bar">
+    <div class="author-avatar">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face" alt="Anna">
+    </div>
+    <div class="author-meta">
+      <div class="author-name">Anna K. ✈️</div>
+      <div class="author-sub">Travel Blogger · March 2025 · Tokyo, Japan</div>
+    </div>
+    <button class="share-btn" onclick="copyLink()">Share ↗</button>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div class="hero-img-wrap reveal">
+    <img src="https://images.unsplash.com/photo-1611143669185-af224c5e3252?w=800&h=500&fit=crop" alt="Omakase counter in Tokyo">
+    <div class="hero-img-caption">📍 The omakase counter — I couldn't believe I'd actually found this</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="section reveal">
+    <div class="section-label">Introduction</div>
+    <p>Okay so I have to tell you about this meal. Like, I'm still thinking about it weeks later, and that NEVER happens to me.</p>
+    <p>I was in Tokyo for two weeks this spring — my third time visiting Japan, but the first time I was really committed to finding proper fine dining that I could actually eat as a Muslim traveler. No pork, no alcohol, no compromises. Just incredible food.</p>
+    <p>And let me tell you... Tokyo does not make this easy. I'd spent three frustrating evenings just walking past beautiful restaurants, peeking in at menus, and sighing. Most omakase places either couldn't confirm halal, or the chef's sauce contained mirin, or the vibe just wasn't right.</p>
+    <p>Then my friend Zara (she runs a food account, follow her seriously) sent me a recommendation for a place in Ginza. She said: <strong>"Just trust me. Book it."</strong></p>
+  </div>
+
+  <div class="divider-diamond reveal"><span>✦</span></div>
+
+  <!-- PROBLEM -->
+  <div class="section reveal">
+    <div class="section-label">The Struggle Was Real</div>
+    <h2>Finding Halal Fine Dining in Tokyo... is Hard</h2>
+    <p>I want to be real with you here because I've seen so many blog posts that make it sound easy. It's not.</p>
+    <p>The standard tourist restaurant recommendations online are full of places that either: a) can't tell you what's in the broth, b) use alcohol in marinades, or c) are just... mediocre tourist traps dressed up nicely.</p>
+    <p>If you want the real experience — counter seating, chef's selection, fresh seasonal ingredients — that's genuinely hard to access as a halal-conscious diner in Japan.</p>
+
+    <div class="pull-quote">
+      <p>"I didn't come all the way to Tokyo to eat the same chicken rice I could've had at home."</p>
+    </div>
+    <p>I wanted the <em>actual</em> experience. Wagyu. Omakase sushi. A chef who actually cares. I just needed somewhere that could guarantee it was prepared right.</p>
+  </div>
+
+  <hr class="divider reveal">
+
+  <!-- DISCOVERY -->
+  <div class="section reveal">
+    <div class="section-label">The Discovery</div>
+    <h2>I Found It — Here's How</h2>
+    <p>Zara's DM came through on a Wednesday. She'd eaten there two months prior and said the chef was trained at a Michelin-starred kitchen. The restaurant specializes in omakase for international guests, with a specifically designed halal menu — not a watered-down version, but genuinely crafted around what's possible without alcohol or pork.</p>
+    <p>I looked it up. Read the reviews. Saw the photos. The counter was immaculate. The wagyu photos were... honestly obscene. I booked a table for two for Friday night.</p>
+
+    <div class="info-table reveal">
+      <div class="info-table-title">📋 Quick Info</div>
+      <div class="info-row"><span class="info-label">Location</span><span class="info-value">Ginza, Tokyo (5-min walk from Ginza Station)</span></div>
+      <div class="info-row"><span class="info-label">Type</span><span class="info-value">Omakase — Counter seating, Chef's selection</span></div>
+      <div class="info-row"><span class="info-label">Halal</span><span class="info-value">✓ Fully certified — no pork, no alcohol</span></div>
+      <div class="info-row"><span class="info-label">Price</span><span class="info-value">¥18,000〜¥30,000 per person (lunch/dinner)</span></div>
+      <div class="info-row"><span class="info-label">Booking</span><span class="info-value">Required — via TableCheck (English available)</span></div>
+    </div>
+  </div>
+
+  <hr class="divider reveal">
+
+  <!-- VISIT — ARRIVAL -->
+  <div class="section reveal">
+    <div class="section-label">The Visit · Part 1</div>
+    <h2>Arriving in Ginza on a Friday Night</h2>
+    <p>Getting there was genuinely easy — which I appreciated because Tokyo's side streets can be a maze. The restaurant is on a quiet street off Ginza's main drag, tucked between a gallery and a flower shop. Very understated entrance. No flashy signage. Just a small wooden door with a single light above it.</p>
+
+    <div class="photo-block reveal">
+      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=700&h=420&fit=crop" alt="Ginza street at night">
+      <div class="photo-caption">📸 The street approaching the restaurant — I almost walked past it twice</div>
+    </div>
+
+    <p>We were met at the door and seated almost immediately. Eight counter seats total. That night there were maybe five guests — it felt intimate and quiet in a way that instantly put me at ease.</p>
+  </div>
+
+  <!-- VISIT — INTERIOR -->
+  <div class="section reveal">
+    <div class="section-label">The Visit · Part 2</div>
+    <h2>First Impression: "Oh. This is the real thing."</h2>
+    <p>The interior is minimal in that very specifically Japanese way — pale wood, low lighting, clean lines. Nothing trying too hard. The counter wraps in a gentle curve around the kitchen, and you can see everything: the fish being broken down, the coals being adjusted, the knives being wiped between cuts.</p>
+
+    <div class="selfie-block reveal">
+      <img src="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=200&h=250&fit=crop&crop=center" alt="Selfie at restaurant counter">
+      <div class="selfie-text">
+        We got seated right at the counter — this was my friend's face approximately two seconds after we sat down. Same, honestly.
+        <strong>📷 Photo by me, iPhone 14 — no filters, just good lighting</strong>
+      </div>
+    </div>
+
+    <p>The chef came over, introduced himself, and asked if either of us had any preferences or dislikes beyond our halal requirements. A small thing, but it mattered. It felt like a conversation, not a transaction.</p>
+  </div>
+
+  <div class="divider-diamond reveal"><span>✦</span></div>
+
+  <!-- SUSHI SECTION -->
+  <div class="section reveal">
+    <div class="section-label">The Food · Sushi Course</div>
+    <h2>The Sushi — Course by Course</h2>
+    <p>We started with four pieces of nigiri. I don't want to oversell this, but the rice alone was a revelation. It was warm — body temperature warm — and seasoned with a vinegar blend that was subtle but present. The tuna was fatty toro, draped like silk.</p>
+
+    <div class="photo-grid reveal">
+      <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=400&h=400&fit=crop" alt="Sushi nigiri closeup">
+      <img src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?w=400&h=400&fit=crop" alt="Chef hands preparing sushi">
+      <div class="caption-pair">Left: toro nigiri. Right: chef's hands at work — I watched every single cut.</div>
+    </div>
+
+    <p>The sea urchin course came mid-way through. I've had uni before that tasted like the ocean had an argument. This was the opposite — creamy, sweet, practically melting. My friend literally put her hand on my arm and said <em>"we're coming back."</em></p>
+
+    <div class="pull-quote reveal">
+      <p>"That uni was the single best bite of food I have ever put in my mouth. I said what I said."</p>
+    </div>
+  </div>
+
+  <!-- WAGYU SECTION -->
+  <div class="section reveal">
+    <div class="section-label">The Food · Wagyu Course</div>
+    <h2>The Wagyu — I Need a Moment</h2>
+    <p>Halfway through the meal, the chef brought out a small charcoal grill. The smell alone was... I'm not a dramatic person, but I closed my eyes.</p>
+    <p>A5 wagyu. Three thin slices. Grilled tableside over binchotan charcoal for about 90 seconds. Served with a pinch of flaky salt and a small dish of citrus.</p>
+
+    <div class="photo-block reveal">
+      <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=700&h=420&fit=crop" alt="Wagyu beef grilled">
+      <div class="photo-caption">📸 This was my actual plate. The marbling — I can still see it when I close my eyes.</div>
+    </div>
+
+    <p>The fat-to-meat ratio meant it basically dissolved before you finished chewing. It sounds like a cliché but it is, genuinely, what happened. My friend and I just looked at each other and didn't say anything for a while.</p>
+    <p>The portion felt small at first — three slices — but by the time it was done, I understood. Any more would've been indulgent in a way that would have overwhelmed the other courses. The chef knows what he's doing.</p>
+  </div>
+
+  <hr class="divider reveal">
+
+  <!-- HALAL SECTION -->
+  <div class="halal-section reveal">
+    <div class="halal-badge">🌙 HALAL CERTIFIED</div>
+    <h3>For My Fellow Muslim Travelers — Here's What You Need to Know</h3>
+    <p>I know this is the section you've been waiting for. So let me be clear and direct:</p>
+    <ul class="halal-checklist">
+      <li>No pork or pork-derived products — none, anywhere in the kitchen</li>
+      <li>No alcohol — not in cooking sauces, not in marinades, not anywhere</li>
+      <li>The wagyu is sourced from halal-certified suppliers</li>
+      <li>Staff are trained to answer halal-related questions clearly</li>
+      <li>Halal certification is visible at the entrance (I checked)</li>
+      <li>English-speaking staff available — no language barrier stress</li>
+    </ul>
+    <p style="margin-top:12px;">I asked about the dashi stock (common issue with Japanese food — often contains bonito or mirin). They use a kombu-based dashi for halal guests. Honestly, I couldn't tell any difference in taste — it was still deeply umami and rich.</p>
+  </div>
+
+  <hr class="divider reveal">
+
+  <!-- REAL REACTION -->
+  <div class="section reveal">
+    <div class="section-label">My Honest Reaction</div>
+    <h2>"I didn't expect it to be this good."</h2>
+    <p>And I mean that in the best way. I think there's a part of me that had mentally prepared for "good for halal" — like, adjusted expectations based on constraints. That is not what happened.</p>
+    <p>This was just... good. Full stop. The kind of meal I'd recommend to literally anyone visiting Tokyo — Muslim or not — who wants a genuinely exceptional food experience.</p>
+    <p>The chef's attention, the quality of the ingredients, the pacing of the courses, the quiet intimacy of the counter — all of it together felt like something that had been thought about very carefully for a very long time.</p>
+
+    <div class="rating-card reveal">
+      <div class="rating-card-title">My Ratings</div>
+      <div class="rating-row"><span>Food Quality</span><span class="stars">★★★★★</span></div>
+      <div class="rating-row"><span>Halal Reliability</span><span class="stars">★★★★★</span></div>
+      <div class="rating-row"><span>Service</span><span class="stars">★★★★★</span></div>
+      <div class="rating-row"><span>Atmosphere</span><span class="stars">★★★★☆</span></div>
+      <div class="rating-row"><span>Value for Money</span><span class="stars">★★★★☆</span></div>
+    </div>
+  </div>
+
+  <!-- HONEST REVIEW -->
+  <div class="review-box reveal">
+    <div class="review-box-label">✍️ My Honest Summary</div>
+    <p style="font-size:14px; color: var(--text-mid); margin-bottom:4px;">The real talk — what I loved and what to be aware of.</p>
+    <div class="pros-cons">
+      <div class="pros">
+        <h4>What I loved</h4>
+        <ul>
+          <li>The wagyu course</li>
+          <li>Genuinely halal</li>
+          <li>Intimate counter</li>
+          <li>Chef interaction</li>
+          <li>No tourist trap vibes</li>
+          <li>English-friendly</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <h4>Worth knowing</h4>
+        <ul>
+          <li>Must book ahead</li>
+          <li>Not budget dining</li>
+          <li>Small portions (intentional)</li>
+          <li>No à la carte</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider reveal">
+
+  <!-- WHO SHOULD GO -->
+  <div class="section reveal">
+    <div class="section-label">Summary</div>
+    <h2>Who Should Book This?</h2>
+
+    <div class="who-box reveal">
+      <h3>This is for you if...</h3>
+      <ul class="who-list">
+        <li>You're a Muslim traveler who wants fine dining without compromise</li>
+        <li>You want a genuinely authentic Tokyo omakase experience</li>
+        <li>This is a special trip and you want one truly memorable meal</li>
+        <li>You've been disappointed by tourist restaurants before</li>
+        <li>Wagyu or sushi is on your Japan bucket list</li>
+        <li>You value quality over quantity</li>
+      </ul>
+    </div>
+
+    <p>Is it expensive? Yes. Is it worth it? For me, 100% yes. I've spent similar amounts on meals in London and New York that were half as good.</p>
+    <p>If you're visiting Tokyo and you want <em>the</em> meal you'll still be talking about on the plane home — this is it.</p>
+  </div>
+
+  <!-- TAGS -->
+  <div class="tags reveal">
+    <span class="tag">#TokyoFood</span>
+    <span class="tag">#HalalJapan</span>
+    <span class="tag">#Omakase</span>
+    <span class="tag">#WagyuTokyo</span>
+    <span class="tag">#MuslimTravel</span>
+    <span class="tag">#GinzaRestaurant</span>
+    <span class="tag">#JapanTravel</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section reveal">
+    <div class="cta-tag">⭐ Anna's Pick</div>
+    <h2>If you're visiting Tokyo,<br>I highly recommend this</h2>
+    <p>Book in advance — tables go fast, especially on weekends.<br>Both lunch and dinner courses are available.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn-primary" onclick="handleCTA(event)">✓ Check Availability & Reserve</a>
+      <a href="#" class="btn-secondary" onclick="handleCTA(event)">View menu & course details</a>
+    </div>
+    <div class="cta-note">🔒 Secure booking via TableCheck · Free cancellation 48hrs before</div>
+  </div>
+
+  <!-- RELATED -->
+  <div class="related-section reveal">
+    <div class="related-title">You might also like</div>
+    <div class="related-grid">
+      <div class="related-card">
+        <img src="https://images.unsplash.com/photo-1518449645937-1be9e9b70e0e?w=300&h=160&fit=crop" alt="Tokyo ramen">
+        <div class="related-card-text">Best Halal Ramen in Tokyo — My Top 5</div>
+      </div>
+      <div class="related-card">
+        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=300&h=160&fit=crop" alt="Tokyo market">
+        <div class="related-card-text">Tsukiji Outer Market — Worth It?</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- STICKY CTA -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-text">
+    <strong>Halal Omakase · Ginza</strong>
+    <span>Limited seats available</span>
+  </div>
+  <button class="sticky-btn" onclick="handleCTA(event)">Reserve →</button>
+</div>
+
+<!-- SNACKBAR -->
+<div class="snackbar" id="snackbar">Link copied! Share it with a friend ✓</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Sticky bar
+  const stickyBar = document.getElementById('stickyBar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) stickyBar.classList.add('visible');
+    else stickyBar.classList.remove('visible');
+  });
+
+  // CTA
+  function handleCTA(e) {
+    e.preventDefault();
+    showSnackbar('Opening reservation page... ✓');
+  }
+
+  // Copy link
+  function copyLink() {
+    showSnackbar('Link copied! Share it with a friend ✓');
+  }
+
+  function showSnackbar(msg) {
+    const s = document.getElementById('snackbar');
+    s.textContent = msg;
+    s.classList.add('show');
+    setTimeout(() => s.classList.remove('show'), 2800);
+  }
+</script>
+</body>
+</html>
