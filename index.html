@@ -439,10 +439,12 @@ hr.div{border:none;border-top:1px solid var(--border);margin:32px 0;}
       <span class="v-num">4.8★</span>
       <div class="v-label">Google · 500+ reviews</div>
     </div>
+    <template data-hidden="tripadvisor">
     <div class="v-item">
       <span class="v-num">#1</span>
       <div class="v-label">TripAdvisor Tokyo</div>
     </div>
+    </template>
     <div class="v-item">
       <span class="v-num">100%</span>
       <div class="v-label">Halal Certified</div>
@@ -453,7 +455,7 @@ hr.div{border:none;border-top:1px solid var(--border);margin:32px 0;}
   <div class="section fade">
     <p>I need to write this down before the feeling fades. I'm on the train home right now, still full, still kind of stunned.</p>
     <p>I spent three days in Shinjuku looking for <strong>one genuinely good halal meal.</strong> Not "halal-friendly." I mean a real, sit-down, counter-seat experience. The kind where a chef is standing in front of you and you can watch every cut.</p>
-    <p>I walked past so many beautiful restaurants. Looked at menus through windows. Asked questions, got vague answers. Most places couldn't tell me what was in the broth. One used alcohol in the marinade. Another just felt like it was designed for tourists who don't know any better.</p>
+    <p>I walked past so many beautiful restaurants. Looked at menus through windows. Asked questions, got vague answers. Most places couldn't tell me what was in the broth. <template data-hidden="alcohol">One used alcohol in the marinade. </template>Another just felt like it was designed for tourists who don't know any better.</p>
     <p>Then I found <strong>omakase 墨</strong>.</p>
   </div>
 
@@ -530,9 +532,11 @@ hr.div{border:none;border-top:1px solid var(--border);margin:32px 0;}
     <p>I know this is the section you came here for. So here it is, clearly:</p>
     <ul class="hlist">
       <li>No pork or pork-derived ingredients anywhere in the kitchen</li>
+      <template data-hidden="alcohol">
       <li>No alcohol — not in cooking, marinades, or sauces</li>
+      </template>
       <li>Wagyu sourced from halal-certified slaughterhouses in Japan</li>
-      <li>Dashi is kombu-based for halal guests (no bonito, no mirin)</li>
+      <li>Dashi is kombu-based for halal guests (no bonito<template data-hidden="alcohol">, no mirin</template>)</li>
       <li>Halal certification is displayed at the entrance — I checked it myself</li>
       <li>English-speaking staff available — no language barrier stress</li>
     </ul>
@@ -579,7 +583,7 @@ hr.div{border:none;border-top:1px solid var(--border);margin:32px 0;}
     <div class="it-row"><span class="it-label">Location</span><span class="it-val">Shinjuku 5-13-19, Tokyo</span></div>
     <div class="it-row"><span class="it-label">Access</span><span class="it-val">5 min walk from Shinjuku Station</span></div>
     <div class="it-row"><span class="it-label">Hours</span><span class="it-val">11:00 — 23:00 daily</span></div>
-    <div class="it-row"><span class="it-label">Halal</span><span class="it-val">✓ Certified · No pork · No alcohol · Prayer room</span></div>
+    <div class="it-row"><span class="it-label">Halal</span><span class="it-val">✓ Certified · No pork<template data-hidden="alcohol"> · No alcohol</template> · Prayer room</span></div>
     <div class="it-row"><span class="it-label">Price range</span><span class="it-val">From ¥18,000 per person</span></div>
     <div class="it-row"><span class="it-label">Booking</span><span class="it-val"><a href="https://www.tablecheck.com/shops/halal-wagyu-shinjuku-5w-tokyo/reserve" target="_blank">TableCheck — English available</a></span></div>
     <div class="it-row"><span class="it-label">Instagram</span><span class="it-val"><a href="https://www.instagram.com/omakase_tokyo_wagyu" target="_blank">@omakase_tokyo_wagyu</a></span></div>
